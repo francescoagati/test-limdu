@@ -2,7 +2,7 @@ const fs = require('fs');
 const serialize = require('serialization');
 
 
-/*
+
 const limdu = require("limdu");
 
 var TextClassifier = limdu.classifiers.multilabel.BinaryRelevance.bind(0, {
@@ -23,12 +23,18 @@ intentClassifier = new limdu.classifiers.EnhancedClassifier({
 });
 
 
+var dataTrain = ['pizza','spaghetti','broccoli'];
+
+/*
 intentClassifier.trainBatch([
 	{input: "I want an apple", output: "apl"},
 	{input: "I want a banana", output: "bnn"},
 	{input: "I want chips", output: "cps"},
 	]);
+*/
 
+
+intentClassifier.trainBatch(dataTrain.map( (word) => { return {input:word,output:word} }));
 
 function newClassifierFunction() {
 	var limdu = require('limdu');
@@ -56,19 +62,19 @@ var intentClassifierString = serialize.toString(intentClassifier, newClassifierF
 fs.writeFileSync('./brain.json', intentClassifierString);
 
 
-console.dir(intentClassifier.classify("I want an apple and a banana"));  // ['apl','bnn']
-console.dir(intentClassifier.classify("I WANT AN APPLE AND A BANANA")); 
-*/
+//console.dir(intentClassifier.classify("I want an apple and a banana"));  // ['apl','bnn']
+//console.dir(intentClassifier.classify("I WANT AN APPLE AND A BANANA")); 
+
+console.dir(intentClassifier.classify("i want a pizza"));
+
 var brain = fs.readFileSync('./brain.json');
 var intentClassifierCopy = serialize.fromString(brain, __dirname);
 
 
 console.log("Deserialized classifier:");
 /*
-intentClassifierCopy.classifyAndLog("I want an apple and a banana");  // ['apl','bnn']
-intentClassifierCopy.classifyAndLog("I want chips and a doughnut");  // ['cps','dnt']
-intentClassifierCopy.trainOnline("I want an elm tree", "elm");
-intentClassifierCopy.classifyAndLog("I want doughnut and elm tree");
-*/
 console.dir(intentClassifierCopy.classify("I want an apple and a banana"));  // ['apl','bnn']
 console.dir(intentClassifierCopy.classify("apple   ")); 
+*/
+
+console.dir(intentClassifierCopy.classify("voglio pizza e spaghetti")); 

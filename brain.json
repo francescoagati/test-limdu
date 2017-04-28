@@ -2,74 +2,50 @@
 	"createNewObjectString": "function newClassifierFunction() {\r\n\tvar limdu = require('limdu');\r\n\tvar TextClassifier = limdu.classifiers.multilabel.BinaryRelevance.bind(0, {\r\n\t\tbinaryClassifierType: limdu.classifiers.Winnow.bind(0, {retrain_count: 10})\r\n\t});\r\n\r\n\tvar WordExtractor = function(input, features) {\r\n\t\tinput.split(\" \").forEach(function(word) {\r\n\t\t\tfeatures[word]=1;\r\n\t\t});\r\n\t};\r\n\t\r\n\t// Initialize a classifier with a feature extractor:\r\n\treturn new limdu.classifiers.EnhancedClassifier({\r\n\t\tclassifierType: TextClassifier,\r\n\t\tfeatureExtractor: WordExtractor,\r\n\t\tpastTrainingSamples: [], // to enable retraining\r\n\t});\r\n}",
 	"object": {
 		"classifier": {
-			"apl": {
+			"pizza": {
 				"positive_weights": {
-					"i": 0.3645,
-					"want": 0.3645,
-					"an": 6.479999999999999,
-					"apple": 6.479999999999999,
-					"bias": 0.3645,
-					"a": 0.8,
-					"banana": 0.8,
-					"chips": 0.28125
+					"pizza": 10.125,
+					"bias": 0.6328125,
+					"spaghetti": 0.5,
+					"broccoli": 0.5
 				},
 				"negative_weights": {
-					"i": 1.0125,
-					"want": 1.0125,
-					"an": 0.16000000000000003,
-					"apple": 0.16000000000000003,
-					"bias": 1.0125,
-					"a": 1.7999999999999998,
-					"banana": 1.7999999999999998,
-					"chips": 3.515625
+					"pizza": 0.0625,
+					"bias": 0.31640625,
+					"spaghetti": 2.25,
+					"broccoli": 2.25
 				},
 				"positive_weights_sum": {},
 				"negative_weights_sum": {}
 			},
-			"bnn": {
+			"spaghetti": {
 				"positive_weights": {
-					"i": 0.3645,
-					"want": 0.3645,
-					"a": 6.479999999999999,
-					"banana": 6.479999999999999,
-					"bias": 0.3645,
-					"an": 0.8,
-					"apple": 0.8,
-					"chips": 0.28125
+					"spaghetti": 10.125,
+					"bias": 0.6328125,
+					"pizza": 0.5,
+					"broccoli": 0.5
 				},
 				"negative_weights": {
-					"i": 1.0125,
-					"want": 1.0125,
-					"a": 0.16000000000000003,
-					"banana": 0.16000000000000003,
-					"bias": 1.0125,
-					"an": 1.7999999999999998,
-					"apple": 1.7999999999999998,
-					"chips": 3.515625
+					"spaghetti": 0.0625,
+					"bias": 0.31640625,
+					"pizza": 2.25,
+					"broccoli": 2.25
 				},
 				"positive_weights_sum": {},
 				"negative_weights_sum": {}
 			},
-			"cps": {
+			"broccoli": {
 				"positive_weights": {
-					"i": 0.8437500000000002,
-					"want": 0.8437500000000002,
-					"chips": 13.18359375,
-					"bias": 0.8437500000000002,
-					"an": 0.32000000000000006,
-					"apple": 0.32000000000000006,
-					"a": 0.8,
-					"banana": 0.8
+					"broccoli": 10.125,
+					"bias": 0.6328125,
+					"pizza": 0.5,
+					"spaghetti": 0.5
 				},
 				"negative_weights": {
-					"i": 0.3075468749999999,
-					"want": 0.3075468749999999,
-					"chips": 0.052734375,
-					"bias": 0.3075468749999999,
-					"an": 3.2399999999999993,
-					"apple": 3.2399999999999993,
-					"a": 1.7999999999999998,
-					"banana": 1.7999999999999998
+					"broccoli": 0.0625,
+					"bias": 0.31640625,
+					"pizza": 2.25,
+					"spaghetti": 2.25
 				},
 				"positive_weights_sum": {},
 				"negative_weights_sum": {}
@@ -77,21 +53,21 @@
 		},
 		"pastTrainingSamples": [
 			{
-				"input": "I want an apple",
+				"input": "pizza",
 				"output": [
-					"apl"
+					"pizza"
 				]
 			},
 			{
-				"input": "I want a banana",
+				"input": "spaghetti",
 				"output": [
-					"bnn"
+					"spaghetti"
 				]
 			},
 			{
-				"input": "I want chips",
+				"input": "broccoli",
 				"output": [
-					"cps"
+					"broccoli"
 				]
 			}
 		]
